@@ -10,6 +10,7 @@ fi
 bundle install --deployment
 
 # Build debian package
+chmod 777 coverage
 fpm -s dir \
 	-t deb \
 	-n "phonebook-$pkg" \
