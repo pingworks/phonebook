@@ -10,6 +10,7 @@ SimpleCov.start do
   add_filter 'spec'
   add_filter 'public'
 end
+SimpleCov.coverage_dir(ENV['COVERAGE_DIR'])
 
 require 'rack'
 

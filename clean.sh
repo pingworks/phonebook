@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Cleanup
-rm -rf .bundle vendor *.deb
+rm -rf .bundle vendor coverage *.deb
 
