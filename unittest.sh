@@ -9,9 +9,9 @@ fi
 # Cleanup
 rm -rf .bundle vendor *.deb
 
-if [ "$pkg"="frontend" ]; then
+if [ "$pkg" = "frontend" ]; then
   exit 0
-elif [ "$pkg"="backend" ]; then
+elif [ "$pkg" = "backend" ]; then
   SPECS="spec/app/models/ spec/framework/persistence/memory_spec.rb"
 fi
 
