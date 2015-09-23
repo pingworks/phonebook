@@ -7,7 +7,7 @@ if [ -z "$pkg" ]; then
 fi
 
 # Install all dependencies locally
-bundle install --without test development --deployment
+bundle install --deployment
 
 # Build debian package
 fpm -s dir \
@@ -16,4 +16,7 @@ fpm -s dir \
 	-v $(<VERSION) \
 	--after-install debian/postinst.sh \
 	--exclude opt/phonebook-$pkg/.git \
+	--exclude opt/phonebook-$pkg/coverage/* \
+	--exclude opt/phonebook-$pkg/coverage/.last_run.json \
+	--exclude opt/phonebook-$pkg/coverage/.resultset.json* \
 	.=/opt/phonebook-$pkg

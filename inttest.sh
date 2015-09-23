@@ -6,4 +6,4 @@ bundle install --deployment
 # Run unittests
 bundle exec rspec \
 	--format RspecJunitFormatter \
-	--out rspec.xml 
+	--out coverage/rspec.xml 
