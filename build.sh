@@ -6,9 +6,6 @@ if [ -z "$pkg" ]; then
   exit 1
 fi
 
-# Cleanup
-rm -rf .bundle vendor *.deb
-
 # Install all dependencies locally
 bundle install --without test development --deployment
 

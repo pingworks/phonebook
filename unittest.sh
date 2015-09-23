@@ -6,9 +6,6 @@ if [ -z "$pkg" ]; then
   exit 1
 fi
 
-# Cleanup
-rm -rf .bundle vendor *.deb
-
 if [ "$pkg" = "frontend" ]; then
   exit 0
 elif [ "$pkg" = "backend" ]; then
