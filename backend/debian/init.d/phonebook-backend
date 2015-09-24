@@ -7,8 +7,8 @@
 # Should-Start:      $named
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: jenkins swarm slave
-# Description:       jenkins swarm slave
+# Short-Description: phonebook app
+# Description:       phonebook app
 ### END INIT INFO
 set -e
 
@@ -25,7 +25,7 @@ fi
 
 OPTS="--host 0.0.0.0"
 
-PIDFILE="/var/run/${NAME}.pid"
+PIDFILE="/tmp/${NAME}.pid"
 DAEMON="/usr/local/bin/bundle"
 
 test -x $DAEMON || exit 1
