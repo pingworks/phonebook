@@ -33,6 +33,9 @@ test -x $DAEMON || exit 1
 case $1 in
   start)
     # check for stale pid file
+    if [ -e $PIDFILE ] && ! kill -0 $(cat $PIDFILE) > /dev/null 2>&1; then
+      rm -f $PIDFILE
+    fi
     if [ ! -e $PIDFILE ]; then
       log_daemon_msg "Starting $NAME"
       start-stop-daemon --start --quiet --chuid $USER --chdir /opt/$NAME --background --make-pidfile --pidfile $PIDFILE --startas /bin/bash -- -c "exec /usr/local/bin/bundle exec rackup --host 0.0.0.0 >${LOG} 2>&1"
