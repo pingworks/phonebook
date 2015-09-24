@@ -20,4 +20,4 @@ fpm -s dir \
 	--exclude opt/phonebook-$pkg/coverage \
 	--exclude opt/phonebook-$pkg/debian \
 	.=/opt/phonebook-$pkg \
-	./debian/init.d/phonebook-$pkg=/etc/init.d
+	./debian/init.d/phonebook-$pkg=/etc/init.d/phonebook-$pkg
