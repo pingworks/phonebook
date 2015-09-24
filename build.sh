@@ -15,6 +15,7 @@ fpm -s dir \
 	-n "phonebook-$pkg" \
 	-v $(<VERSION) \
 	--after-install debian/postinst.sh \
+	--before-remove debian/prerm.sh \
 	--exclude opt/phonebook-$pkg/.git \
 	--exclude opt/phonebook-$pkg/coverage \
 	.=/opt/phonebook-$pkg
