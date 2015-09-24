@@ -18,4 +18,6 @@ fpm -s dir \
 	--before-remove debian/prerm.sh \
 	--exclude opt/phonebook-$pkg/.git \
 	--exclude opt/phonebook-$pkg/coverage \
-	.=/opt/phonebook-$pkg
+	--exclude opt/phonebook-$pkg/debian \
+	.=/opt/phonebook-$pkg \
+	./debian/init.d=/etc/init.d
