@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # kill running ruby app
-/etc/init.d/phonebook-backend stop
+[ -x /etc/init.d/phonebook-backend ] && /etc/init.d/phonebook-backend stop
 
