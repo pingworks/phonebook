@@ -1,4 +1,5 @@
 // it would be nice to have bower handle all this for us ...
+//= require './config.js'
 //= require './vendor/lodash/dist/lodash.js'
 //= require './vendor/async/lib/async.js'
 //= require './vendor/active-support/active-support.js'
@@ -32,7 +33,7 @@ phonebook.factory('Contact', ['ActiveResource', function(ActiveResource){
   }
 
   Contact.inherits(ActiveResource.Base);
-  Contact.api.set('http://localhost:9293').format('json');
+  Contact.api.set(backend_url).format('json');
 
   return Contact;
 }])
