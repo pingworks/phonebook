@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DIR=$(dirname $0)
 PKGS=$1
 
 if [ -z "$PKGS" ]; then
@@ -10,5 +11,5 @@ fi
 set -e
 
 for pkg in $PKGS; do
-  sudo dpkg -i ${pkg}_*.deb
+  sudo dpkg -i ${DIR}/${pkg}_*.deb
 done
