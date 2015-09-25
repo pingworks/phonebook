@@ -10,6 +10,7 @@ fi
 
 set -e
 
+cd ${DIR}
 for pkg in $PKGS; do
-  sudo dpkg -i ${DIR}/${pkg}_*.deb
+  sudo dpkg -i ${pkg}_*.deb
 done
