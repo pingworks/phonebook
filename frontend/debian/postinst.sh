@@ -9,6 +9,5 @@
 # change ownership of config.js
 if id deploy >/dev/null 2>&1; then
   chown deploy:deploy /opt/phonebook-frontend/assets/javascript/config.js
-  sed -i -e "s;__DOMAIN__;$(dnsdomainname);g" /opt/phonebook-frontend/assets/javascript/config.js
 fi
-
+sed -i -e "s;__DOMAIN__;$(dnsdomainname);g" /opt/phonebook-frontend/assets/javascript/config.js
