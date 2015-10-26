@@ -2,3 +2,5 @@ coverage
 .idea
 backend/vendor
 frontend/vendor
+backend/.bundle
+frontend/.bundle
