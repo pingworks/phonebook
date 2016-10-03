@@ -6,20 +6,20 @@
             "name": "phonebook-build",
             "image": "kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3",
             "args": [
-              "/src/build-docker.sh",
+              "/src/phonebook-build/build-docker.sh",
               "frontend",
               "1df6ad4"
             ],
             "volumeMounts": [{
               "mountPath": "/src",
-              "name": "phonebook-src"
+              "name": "jenkins-workspace"
             }]
           }
         ],
         "volumes": [{
-          "name":"phonebook-src",
+          "name":"jenkins-workspace",
           "persistentVolumeClaim": {
-            "claimName": "phonebook-src-pvc"
+            "claimName": "pvc-jenkins-workspace"
           }
         }]
   }
