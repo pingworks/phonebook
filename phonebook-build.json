@@ -1,0 +1,26 @@
+{
+  "apiVersion": "v1",
+  "spec": {
+        "containers": [
+          {
+            "name": "phonebook-build",
+            "image": "kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3",
+            "args": [
+              "/src/build-docker.sh",
+              "frontend",
+              "1df6ad4"
+            ],
+            "volumeMounts": [{
+              "mountPath": "/src",
+              "name": "phonebook-src"
+            }]
+          }
+        ],
+        "volumes": [{
+          "name":"phonebook-src",
+          "persistentVolumeClaim": {
+            "claimName": "phonebook-src-pvc"
+          }
+        }]
+  }
+}
