@@ -9,7 +9,7 @@ fi
 
 
 ${WORKSPACE}/../kube/kubectl run phonebook-build \
-  --image=kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3 \
+  --image=kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:7aae9dd71c19 \
   --restart=Never \
   --overrides="$(sed -e "s;__PKG__;$pkg;g" \
 	-e "s;__VERSION__;$ver;g" \
