@@ -1,1 +1,1 @@
-backend_url='http://backend';
+backend_url='http://phonebook-backend';
