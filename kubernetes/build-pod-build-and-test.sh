@@ -13,5 +13,6 @@ ${WORKSPACE}/../kube/kubectl run phonebook-build \
   --restart=Never \
   --overrides="$(sed -e "s;__PKG__;$pkg;g" \
 	-e "s;__VERSION__;$ver;g" \
+	-e "s;__JOBNAME__;$JOB_BASE_NAME;g" \
 	kubernetes/build-pod-overrides.json)"
 
