@@ -1,4 +1,4 @@
-FROM kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3
+FROM kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:7aae9dd71c19
 MAINTAINER Christoph Lukas <christoph.lukas@gmx.net>
 
 ENV DEBIAN_FRONTEND noninteractive
