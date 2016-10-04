@@ -1,1 +1,1 @@
-backend_url='http://backend:9293';
+backend_url='http://backend';
