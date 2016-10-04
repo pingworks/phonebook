@@ -7,8 +7,8 @@
             "image": "kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3",
             "args": [
               "/src/phonebook-build/kubernetes/build-and-test.sh",
-              "frontend",
-              "1df6ad4"
+              "__PKG__",
+              "__VERSION__"
             ],
             "volumeMounts": [{
               "mountPath": "/src",
