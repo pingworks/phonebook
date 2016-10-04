@@ -2,6 +2,7 @@ FROM kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db
 MAINTAINER Christoph Lukas <christoph.lukas@gmx.net>
 
 ENV DEBIAN_FRONTEND noninteractive
+ARG ARTEFACT_URL
 
 RUN ARTEFACT_FILE=$(basename $ARTEFACT_URL); wget -O "/tmp/$ARTEFACT_FILE" "$ARTEFACT_URL"
 RUN \
