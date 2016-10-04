@@ -11,7 +11,7 @@ if [ -z "$pkg" -o -z "$ver" ]; then
   exit 1
 fi
 
-cd $pkg
+cd ../$pkg
 rm -rf vendor *.deb
 
 # Install all dependencies locally
