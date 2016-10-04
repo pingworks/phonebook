@@ -11,16 +11,28 @@ if [ -z "$pkg" -o -z "$ver" ]; then
   exit 1
 fi
 
-#gem install fpm
-
 cd $pkg
-#rm -rf .bundle vendor coverage *.deb
 rm -rf vendor *.deb
 
 # Install all dependencies locally
-#bundle install --deployment
+echo "Checking dependencies.."
 bundle install
+echo "done."
 
+echo "Running unittests.."
+if [ "$pkg" = "frontend" ]; then
+  echo 'No unittests for frontend available..'
+elif [ "$pkg" = "backend" ]; then
+  SPECS="spec/app/models/ spec/framework/persistence/memory_spec.rb"
+  # Run unittests
+  bundle exec rspec \
+	--format RspecJunitFormatter \
+	--out rspec.xml \
+	$SPECS
+fi
+echo "done."
+
+echo "Building debian package.."
 # Build debian package
 fpm -s dir \
 	-t deb \
@@ -33,3 +45,5 @@ fpm -s dir \
 	--exclude opt/phonebook-$pkg/debian \
 	.=/opt/phonebook-$pkg \
 	./debian/init.d/phonebook-$pkg=/etc/init.d/phonebook-$pkg
+echo "done."
+

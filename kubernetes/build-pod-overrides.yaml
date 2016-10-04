@@ -6,7 +6,7 @@
             "name": "phonebook-build",
             "image": "kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3",
             "args": [
-              "/src/phonebook-build/build-docker.sh",
+              "/src/phonebook-build/kubernetes/build-test.sh",
               "frontend",
               "1df6ad4"
             ],
