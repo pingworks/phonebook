@@ -12,6 +12,6 @@ ${WORKSPACE}/../kube/kubectl run phonebook-build \
   --image=kube-registry.kube-system.svc.cluster.local:5000/ruby-phonebook:a34121390db3 \
   --restart=Never \
   --overrides="$(sed -e "s;__PKG__;$pkg;g" \
-	-e "s;__VERSION__;$ver;g' \
+	-e "s;__VERSION__;$ver;g" \
 	kubernetes/build-pod-overrides.json)
 
