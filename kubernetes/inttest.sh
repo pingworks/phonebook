@@ -7,6 +7,8 @@ fi
 
 # Run integration tests
 cd $dir
+SPECS="spec/app/api_v1_spec.rb"
 bundle exec rspec \
 	--format RspecJunitFormatter \
-	--out coverage/rspec.xml
+	--out coverage/rspec.xml \
+	$SPECS
