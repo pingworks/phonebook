@@ -27,7 +27,7 @@ ${KUBECTL} run $name \
 	kubernetes/kubernetes-run-overrides.json)"
 
 i=0
-while ! ${KUBECTL} logs -f $name && test i -lt 10; do
+while ! ${KUBECTL} logs -f $name && test $i -lt 10; do
   sleep 1
   ((i++))
 done
