@@ -17,5 +17,11 @@ fi
 if [ ! -z "$suffix" ]; then
   suffix="-$suffix"
 fi
+if [ -z "$KUBECTL" ]; then
+  KUBECTL="$(which kubectl)"
+  if [ -z "$KUBECTL" ]; then
+    KUBECTL="${WORKSPACE}/../kube/kubectl"
+  fi
+fi
 
 kubectl set image deployment/phonebook-${pkg}${suffix} phonebook-${pkg}=kube-registry.kube-system.svc.cluster.local:5000/phonebook-${pkg}:1git${ver}

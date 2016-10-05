@@ -17,6 +17,12 @@ fi
 if [ ! -z "$suffix" ]; then
   suffix="-$suffix"
 fi
+if [ -z "$KUBECTL" ]; then
+  KUBECTL="$(which kubectl)"
+  if [ -z "$KUBECTL" ]; then
+    KUBECTL="${WORKSPACE}/../kube/kubectl"
+  fi
+fi
 
 sed -e "s;__IMG_VERSION__;1git$ver;" \
   -e "s;__STAGE__;$stage;g" \
