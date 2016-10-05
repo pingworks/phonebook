@@ -28,9 +28,9 @@ sed -e "s;__IMG_VERSION__;1git$ver;" \
   -e "s;__STAGE__;$stage;g" \
   -e "s;__SUFFIX__;$suffix;g" \
   yamls/deployment-phonebook-${pkg}.yaml \
-  | kubectl create -f -
+  | ${KUBECTL} create -f -
 sed -e "s;__IMG_VERSION__;1git$ver;" \
   -e "s;__STAGE__;$stage;g" \
   -e "s;__SUFFIX__;$suffix;g" \
   yamls/service-phonebook-${pkg}.yaml \
-  | kubectl create -f -
+  | ${KUBECTL} create -f -

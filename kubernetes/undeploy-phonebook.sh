@@ -23,5 +23,5 @@ if [ -z "$KUBECTL" ]; then
   fi
 fi
 
-kubectl delete deployment phonebook-${pkg}${suffix}
-kubectl delete service phonebook-${pkg}${suffix}
+${KUBECTL} delete deployment phonebook-${pkg}${suffix}
+${KUBECTL} delete service phonebook-${pkg}${suffix}

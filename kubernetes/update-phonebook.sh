@@ -24,4 +24,4 @@ if [ -z "$KUBECTL" ]; then
   fi
 fi
 
-kubectl set image deployment/phonebook-${pkg}${suffix} phonebook-${pkg}=kube-registry.kube-system.svc.cluster.local:5000/phonebook-${pkg}:1git${ver}
+${KUBECTL} set image deployment/phonebook-${pkg}${suffix} phonebook-${pkg}=kube-registry.kube-system.svc.cluster.local:5000/phonebook-${pkg}:1git${ver}
