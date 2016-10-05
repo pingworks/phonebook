@@ -25,3 +25,9 @@ ${KUBECTL} run $name \
 	-e "s;__IMAGE__;$img;g" \
 	-e "s;__CMD__;$cmdstring;g" \
 	kubernetes/kubernetes-run-overrides.json)"
+
+i=0
+while ! ${KUBECTL} logs -f $name && test i -lt 10; do
+  sleep 1
+  ((i++))
+done
