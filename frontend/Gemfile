@@ -19,3 +19,12 @@ group :development, :test do
   gem 'rack-test'
   gem 'guard-rspec'
 end
+gem 'grape'
+gem 'grape-entity'
+gem 'multi_json'
+gem 'activemodel'
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-persistence'
+gem 'rack-cors'
+gem 'airborne'
