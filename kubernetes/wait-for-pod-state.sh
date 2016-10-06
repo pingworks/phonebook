@@ -18,14 +18,16 @@ fi
 i=0
 EC=1
 until [ $EC -eq 0 -o $i -ge $timeout ]; do
-  current_status=$(${KUBECTL} describe pod -l $label | grep "Status:" | awk '{print $2}')
-  echo "Waiting for pod $label to be $status, current status is: ${current_status}"
-  if [ "$current_status" = "$status" ]; then
-    EC=0
-  else
-    EC=1
-  fi
-  echo "EC:$EC"
+  current_stati=$(${KUBECTL} describe pod -l $label | grep "Status:" | awk '{print $2}' | sed -e "s;\n; ;g")
+  echo "Waiting for pod $label to be $status, current stati are: ${current_stati}"
+  for current_status in $current_stati; do 
+    if [ "$current_status" = "$status" ]; then
+      EC=0
+      break
+    else
+      EC=1
+    fi
+  done
   ((i++))
   sleep 1
 done
