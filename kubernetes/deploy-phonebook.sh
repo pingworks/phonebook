@@ -24,7 +24,7 @@ if [ -z "$KUBECTL" ]; then
   fi
 fi
 
-if kubectl describe deployment phonebook-${pkg}${suffix} > /dev/null 2>&1; then
+if ${KUBECTL} describe deployment phonebook-${pkg}${suffix} > /dev/null 2>&1; then
   bash update-phonebook.sh $pkg $ver $stage $suffix
 else
   sed -e "s;__IMG_VERSION__;1git$ver;" \
@@ -34,7 +34,7 @@ else
     | ${KUBECTL} create -f -
 fi
 
-if ! kubectl describe service phonebook-${pkg}${suffix} > /dev/null 2>&1; then
+if ! ${KUBECTL} describe service phonebook-${pkg}${suffix} > /dev/null 2>&1; then
   sed -e "s;__IMG_VERSION__;1git$ver;" \
     -e "s;__STAGE__;$stage;g" \
     -e "s;__SUFFIX__;$suffix;g" \
