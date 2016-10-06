@@ -20,6 +20,8 @@ EC=1
 until [ $EC -eq 0 -o $i -ge $timeout ]; do
   current_state=$(${KUBECTL} describe pod -l $label | grep "State:" | awk '{print $2}')
   echo "Waiting for pod $label to be $state, current state is: ${current_state}"
+  echo "current_state:${current_state}"
+  echo "state:${state}"
   if [ "$current_state" = "$state" ]; then
     EC=0
   else
