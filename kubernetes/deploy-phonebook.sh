@@ -24,13 +24,20 @@ if [ -z "$KUBECTL" ]; then
   fi
 fi
 
-sed -e "s;__IMG_VERSION__;1git$ver;" \
-  -e "s;__STAGE__;$stage;g" \
-  -e "s;__SUFFIX__;$suffix;g" \
-  yamls/deployment-phonebook-${pkg}.yaml \
-  | ${KUBECTL} create -f -
-sed -e "s;__IMG_VERSION__;1git$ver;" \
-  -e "s;__STAGE__;$stage;g" \
-  -e "s;__SUFFIX__;$suffix;g" \
-  yamls/service-phonebook-${pkg}.yaml \
-  | ${KUBECTL} create -f -
+if kubectl describe deployment phonebook-${pkg}${suffix} > /dev/null 2>&1; then
+  bash update-phonebook.sh $pkg $ver $stage $suffix
+else
+  sed -e "s;__IMG_VERSION__;1git$ver;" \
+    -e "s;__STAGE__;$stage;g" \
+    -e "s;__SUFFIX__;$suffix;g" \
+    yamls/deployment-phonebook-${pkg}.yaml \
+    | ${KUBECTL} create -f -
+fi
+
+if ! kubectl describe service phonebook-${pkg}${suffix} > /dev/null 2>&1; then
+  sed -e "s;__IMG_VERSION__;1git$ver;" \
+    -e "s;__STAGE__;$stage;g" \
+    -e "s;__SUFFIX__;$suffix;g" \
+    yamls/service-phonebook-${pkg}.yaml \
+    | ${KUBECTL} create -f -
+fi
