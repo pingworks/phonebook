@@ -18,8 +18,16 @@ fi
 i=0
 EC=1
 until [ $EC -eq 0 -o $i -ge $timeout ]; do
-  ${KUBECTL} describe pod -l $label | grep "State:\s*${state}"
-  EC=$?
+  current_state=$(${KUBECTL} describe pod -l $label | grep "State:" | awk '{print $2}')
+  echo "Waiting for pod $label to be $state, current state is: ${current_state}"
+  if [ "$current_state" = "$state" ]; then
+    EC=0
+  else
+    EC=1
+    if [ "$current_state" = "Terminated" ]; then
+      break
+    fi
+  fi
   ((i++))
   sleep 1
 done

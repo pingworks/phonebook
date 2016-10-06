@@ -26,12 +26,9 @@ ${KUBECTL} run $name \
 	-e "s;__CMD__;$cmdstring;g" \
 	kubernetes/kubernetes-run-overrides.json)"
 
-i=0
-EC=1
-until [ $EC -eq 0 -o $i -ge 10 ]; do
-  ${KUBECTL} logs -f $name
-  EC=$?
-  ((i++))
-  sleep 1
-done
-[ $EC -eq 0 ] || exit 1
+echo
+bash $(dirname $0)/wait-for-pod-state.sh "app=${name}" Running 30
+
+echo "Reading logs from pod $name:"
+echo
+${KUBECTL} logs -f $name
