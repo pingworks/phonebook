@@ -22,5 +22,5 @@ group :development, :test do
   gem 'rspec_junit_formatter'
   gem 'rack-test'
   gem 'guard-rspec'
-  gem 'airborne'
 end
+gem 'airborne'
