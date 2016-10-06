@@ -7,6 +7,11 @@ fi
 
 # Run integration tests
 cd $dir
+
+if [ -z "$ENDPOINT" ]; then
+	export ENDPOINT="phonebook-backend"
+fi
+
 SPECS="spec/app/api_v1_spec.rb"
 bundle exec rspec \
 	--format RspecJunitFormatter \
