@@ -1,11 +1,11 @@
 #!/bin/bash
 
 label=$1
-state=$2
+status=$2
 timeout=$3
 
-if [ -z "$label" -o -z "$state" -o -z "$timeout" ]; then
-  echo "Usage $0 <label> <state> <timeout>"
+if [ -z "$label" -o -z "$status" -o -z "$timeout" ]; then
+  echo "Usage $0 <label> <status> <timeout>"
   exit 1
 fi
 if [ -z "$KUBECTL" ]; then
@@ -18,15 +18,14 @@ fi
 i=0
 EC=1
 until [ $EC -eq 0 -o $i -ge $timeout ]; do
-  current_state=$(${KUBECTL} describe pod -l $label | grep "State:" | awk '{print $2}')
-  echo "Waiting for pod $label to be $state, current state is: ${current_state}"
-  echo "current_state:${current_state}"
-  echo "state:${state}"
-  if [ "$current_state" = "$state" ]; then
+  current_status=$(${KUBECTL} describe pod -l $label | grep "Status:" | awk '{print $2}')
+  echo "Waiting for pod $label to be $status, current status is: ${current_status}"
+  if [ "$current_status" = "$status" ]; then
     EC=0
   else
     EC=1
   fi
+  echo "EC:$EC"
   ((i++))
   sleep 1
 done
