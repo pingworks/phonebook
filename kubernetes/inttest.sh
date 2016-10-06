@@ -15,5 +15,5 @@ fi
 SPECS="spec/app/api_v1_spec.rb"
 bundle exec rspec \
 	--format RspecJunitFormatter \
-	--out coverage/rspec.xml \
+	--out rspec-int.xml \
 	$SPECS
