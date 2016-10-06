@@ -24,9 +24,6 @@ until [ $EC -eq 0 -o $i -ge $timeout ]; do
     EC=0
   else
     EC=1
-    if [ "$current_state" = "Terminated" ]; then
-      break
-    fi
   fi
   ((i++))
   sleep 1
